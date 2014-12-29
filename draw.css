@@ -1,0 +1,81 @@
+body {
+  background-color: rgb(25,25,50);
+  margin: 5px;
+  overflow: hidden;
+}
+
+#infopanel {
+  width: 192px;
+  font-size: small;
+  border: 1px solid white;
+  display: inline-block;
+  margin-right: 5px;
+  vertical-align: text-top;
+  padding: 3px;
+  position: relative;
+}
+
+#infopanel-top {
+  padding: 1px;
+  border: 1px solid white;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+}
+
+#infopanel-buttons {
+  overflow-y: auto;
+  margin-top: 3px;
+}
+
+#infopanel div.button { margin-top: 1px; }
+
+#infopanel div.button div {
+  padding: 3px;
+  display: inline-block;
+}
+
+#infopanel div.button div.key_segment {
+  text-align: center;
+  vertical-align: top;
+  font-weight: bold;
+  color: white;
+  width: 30px;
+}
+
+#infopanel div.button.gray div.key_segment { background-color: rgb(100,100,100); }
+#infopanel div.button.gray div.text_segment { background-color: rgb(150,150,150); }
+
+#infopanel div.button.blue div.key_segment { background-color: rgb(100,100,160); }
+#infopanel div.button.blue div.text_segment { background-color: rgb(150,150,240); }
+
+#infopanel div.button.yellow div.key_segment { background-color: rgb(160,160,100); }
+#infopanel div.button.yellow div.text_segment { background-color: rgb(240,240,150); }
+
+#infopanel div.button.red div.key_segment { background-color: rgb(160,100,100); }
+#infopanel div.button.red div.text_segment { background-color: rgb(240,150,150); }
+
+#infopanel div.button.brown div.key_segment { background-color: rgb(120,60,18) }
+#infopanel div.button.brown div.text_segment { background-color: rgb(160,80,24) }
+
+#infopanel div.button.green div.key_segment { background-color: rgb(100,160,100) }
+#infopanel div.button.green div.text_segment { background-color: rgb(150,240,150) }
+
+#homelink {
+  position: absolute;
+  bottom: 0px;
+  width: 192px;
+  text-align: center;
+}
+
+#homelink a {
+  color: white;
+  line-height: 200%;
+}
+
+canvas {
+  position: absolute;
+  vertical-align: text-top;
+}
+
+#backlayer { background-color: white; }

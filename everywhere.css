@@ -1,0 +1,39 @@
+body {
+  font-family: "Courier New", Courier, monospace;
+  font-weight: bold;
+  font-size: 0;
+  margin: 5px;
+  text-align: center;
+}
+
+#explainer {
+  color: white;
+  padding: 15px;
+  border-top: 1px solid white;
+  border-bottom: 1px solid white;
+  font-size: large;
+  text-align: left;
+}
+
+#explainer a {
+  color: black;
+}
+
+a.center-tile {
+  border-left: 1px solid;
+  border-right: 1px solid;
+}
+
+.tile {
+  display: inline-block;
+  text-decoration: none;
+  text-align: center;
+}
+
+a.tile span {
+  font-size: xx-large;
+}
+
+canvas, img {
+  vertical-align: bottom;
+}

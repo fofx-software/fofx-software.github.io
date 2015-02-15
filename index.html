@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>f(x) software</title>
+    <script src=index.js></script>
+    <style>
+      body { margin: 10px; position: relative; }
+      svg { position: absolute; }
+      #canvas { cursor: crosshair; }
+      .moveable { cursor: grab; }
+      text { font-size: 20px; }
+    </style>
+    <script src=https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js></script>
+  </head>
+  <body>
+    <svg id=grid class=full-page xmlns=http://www.w3.org/2000/svg></svg>
+    <svg id=canvas class=full-page xmlns=http://www.w3.org/2000/svg>
+      <line id=angle-line stroke-width=1></line>
+      <path id=angle-arc stroke-width=1 fill=transparent></path>
+      <text id=angle-text alignment-baseline=top></text>
+      <line id=x-axis stroke-width=1 stroke=black></line>
+      <line id=y-axis stroke-width=1 stroke=black></line>
+      <svg id=about class=moveable stroke=white>
+        <circle id=bubble-about></circle>
+        <text id=text-about text-anchor=middle dominant-baseline=central fill=white>About</text>
+      </svg>
+      <svg id=contact class=moveable stroke=white>
+        <circle id=bubble-contact></circle>
+        <text id=text-contact text-anchor=middle dominant-baseline=central fill=white>Contact</text>
+      </svg>
+      <svg id=websites class=moveable stroke=white>
+        <circle id=bubble-websites></circle>
+        <text id=text-websites text-anchor=middle dominant-baseline=central fill=white>Wesbites</text>
+      </svg>
+      <svg id=software class=moveable stroke=white>
+        <circle id=bubble-software></circle>
+        <text id=text-software text-anchor=middle dominant-baseline=central fill=white>Software</text>
+      </svg>
+    </svg>
+  </body>
+</html>

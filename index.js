@@ -97,7 +97,7 @@ function makeTextBubble(elementId, altText) {
   var bubble = $('#bubble-' + elementId)[0];
   var text = $('#text-' + elementId)[0];
 
-  var mainText = [$('#text-' + elementId).text()];
+  var mainText = [$(text).text()];
   altText = Array.prototype.slice.call(arguments, 1);
 
   $(bubble).attr('fill', color );
@@ -142,7 +142,7 @@ function makeTextBubble(elementId, altText) {
   });
 
   var reText = function(textArray) {
-    var topY = center[1] - (textArray.length - 1) * 10;
+    var topY = center[1] - textArray.length * 10;
     $(text).empty().attr('y', topY);
     textArray.forEach(function(text, i) {
       $(this).append(
@@ -150,12 +150,14 @@ function makeTextBubble(elementId, altText) {
           .text(text)
           .attr({
             x: center[0],
-            y: topY + i * 20
+            dy: 20
           })
       );
     }, text);
     $(bubble).attr('r', text.getBBox().width / 2 + 10);
   }
+
+  reText(mainText);
 }
 
 function makeLogo() {

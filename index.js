@@ -142,18 +142,15 @@ function makeTextBubble(elementId, altText) {
   });
 
   var reText = function(textArray) {
-    var topY = center[1] - textArray.length * 10;
-    $(text).empty().attr('y', topY);
-    textArray.forEach(function(text, i) {
-      $(this).append(
+    var topY = center[1] - (textArray.length - 1) * 10 + 5;
+    $(text).empty();
+    $.each(textArray, function(i) {
+      $(text).append(
         $(document.createElementNS(namespace, 'tspan'))
-          .text(text)
-          .attr({
-            x: center[0],
-            dy: 20
-          })
+          .text(this)
+          .attr({ x: center[0], y: topY + i * 20 })
       );
-    }, text);
+    });
     $(bubble).attr('r', text.getBBox().width / 2 + 10);
   }
 

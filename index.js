@@ -194,9 +194,8 @@ function makeLogo() {
   $(logo.appendChild(
     document.createElementNS(namespace, 'text')
   )).attr({
-    x: period / 2,
-    y: y(period / 2 + 5) + y(0) + 10,
-    'dominant-baseline': 'hanging',
+    x: period / 2 + 5,
+    y: y(period / 2 + 5) + y(0) + 25,
     fill: color
   }).css('font', 'italic 15px sans-serif')
     .text('(x) software');

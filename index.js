@@ -91,10 +91,10 @@ window.addEventListener('load', function() {
   makeTextBubble('websites', 'Full websites', 'built from scratch,', 'customized to', 'your needs.');
   makeTextBubble('software', 'Powerful web and', 'desktop applications', 'to solve any', 'challenge.');
 
-  $('.moveable').on('mousedown', function() {
+  $('#canvas').on('mousedown', '.moveable', function() {
     $(this).attr('class', $(this).attr('class').replace('moveable', '') + ' moving');
   });
-  $('.moving').on('mouseup', function() {
+  $('#canvas').on('mouseup', '.moving', function() {
     $(this).attr('class', $(this).attr('class').replace('moving', '') + ' moveable');
   });
 }, false);

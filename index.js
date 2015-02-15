@@ -124,7 +124,7 @@ function makeTextBubble(elementId, altText) {
   $(svg).mouseleave(function() { reText(mainText); });
 
   $(svg).mousedown(function(e) {
-    $(this).css('cursor', 'grabbing');
+    $(svg).attr('class', 'textbubble moving');
     var diff = {
       x: e.pageX - center[0],
       y: e.pageY - center[1]
@@ -135,9 +135,11 @@ function makeTextBubble(elementId, altText) {
       reText(altText);
       $(bubble).attr({ cx: center[0], cy: center[1] });
     });
-    $(window).mouseup(function() {
+    var cancelMoveTextBubble;
+    $(window).mouseup(cancelMoveTextBubble = function() {
       $(window).off('mousemove', moveTextBubble);
-      $(svg).css('cursor', 'grab');
+      $(window).off('mouseup', cancelMoveTextBubble);
+      $(svg).attr('class', 'textbubble moveable');
     });
   });
 

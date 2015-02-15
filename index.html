@@ -8,7 +8,16 @@
       body { margin: 10px; position: relative; }
       svg { position: absolute; }
       #canvas { cursor: crosshair; }
-      .moveable { cursor: url(/openhand.cur), move; cursor: grab; cursor: -webkit-grab; }
+      .moveable {
+        cursor: url(/openhand.cur), move;
+        cursor: grab;
+        cursor: -webkit-grab;
+      }
+      .moving {
+        cursor: url(/closedhand.cur), move;
+        cursor: grabbing;
+        cursor: -webkit-grabbing;
+      }
       text { font-size: 20px; }
     </style>
     <script src=https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js></script>

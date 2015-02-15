@@ -90,6 +90,13 @@ window.addEventListener('load', function() {
   makeTextBubble('contact', 'Find out what we', 'can do for you:', 'fofx-software@gmail.com');
   makeTextBubble('websites', 'Full websites', 'built from scratch,', 'customized to', 'your needs.');
   makeTextBubble('software', 'Powerful web and', 'desktop applications', 'to solve any', 'challenge.');
+
+  $('moveable').on('mousedown', function() {
+    $(this).attr('class', $(this).attr('class').replace('moveable', '') + ' moving');
+  });
+  $('moveable').on('mouseup', function() {
+    $(this).attr('class', $(this).attr('class').replace('moving', '') + ' moveable');
+  });
 }, false);
 
 function makeTextBubble(elementId, altText) {
@@ -124,7 +131,6 @@ function makeTextBubble(elementId, altText) {
   $(svg).mouseleave(function() { reText(mainText); });
 
   $(svg).mousedown(function(e) {
-    $(svg).attr('class', 'textbubble moving');
     var diff = {
       x: e.pageX - center[0],
       y: e.pageY - center[1]
@@ -139,7 +145,6 @@ function makeTextBubble(elementId, altText) {
     $(window).mouseup(cancelMoveTextBubble = function() {
       $(window).off('mousemove', moveTextBubble);
       $(window).off('mouseup', cancelMoveTextBubble);
-      $(svg).attr('class', 'textbubble moveable');
     });
   });
 
@@ -160,12 +165,7 @@ function makeTextBubble(elementId, altText) {
 }
 
 function makeLogo() {
-  var logo = $(
-    $('#canvas')[0].appendChild(document.createElementNS(namespace, 'svg'))
-  ).attr({
-    'class': 'moveable',
-    x: 0, y: 0
-  })[0];
+  var logo = $('#logo')[0];
  
   var period = $('body').width() / 10;
   var scale = period / Math.PI;

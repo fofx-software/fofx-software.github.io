@@ -136,13 +136,13 @@ function makeTextBubble(elementId, altText) {
       y: e.pageY - center[1]
     }
     var moveTextBubble;
-    $(document).mousemove(moveTextBubble = function(e) {
+    $(window).mousemove(moveTextBubble = function(e) {
       center = [e.pageX - diff.x, e.pageY - diff.y];
       $(bubble).attr({ cx: center[0], cy: center[1] });
       reText(altText);
     });
     var cancelMoveTextBubble;
-    $(document).mouseup(cancelMoveTextBubble = function() {
+    $(window).mouseup(cancelMoveTextBubble = function() {
       $(window).off('mousemove', moveTextBubble);
       $(window).off('mouseup', cancelMoveTextBubble);
     });

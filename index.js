@@ -87,15 +87,15 @@ window.addEventListener('load', function() {
   makeLogo();
 
   makeTextBubble('about', 'f(x) software is a', 'small, independent', 'software and website', 'development shop in', 'Northern Virginia.');
-  makeTextBubble('contact', 'Find out what we', 'can do for you:', 'fofx-software@gmail.com');
+  makeTextBubble('contact', 'Find out what we', 'can do for you:', 'joe@fofx-software.com');
   makeTextBubble('websites', 'Full websites', 'built from scratch,', 'customized to', 'your needs.');
   makeTextBubble('software', 'Powerful web and', 'desktop applications', 'to solve any', 'challenge.');
 
   $('#canvas').on('mousedown', '.moveable', function() {
-    $(this).attr('class', $(this).attr('class').replace('moveable', '') + ' moving');
+    $(this).attr('class', $(this).attr('class').replace('moveable', 'moving'));
   });
   $('#canvas').on('mouseup', '.moving', function() {
-    $(this).attr('class', $(this).attr('class').replace('moving', '') + ' moveable');
+    $(this).attr('class', $(this).attr('class').replace('moving', 'moveable'));
   });
 }, false);
 

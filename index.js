@@ -87,9 +87,9 @@ window.addEventListener('load', function() {
       newEnd.x + ' ' + newEnd.y
     );
     $('#angle-text').text(Math.round((2 * Math.PI - angle) / Math.PI * 180) + unescape('\xB0'));
-
-    makeLogo();
   });
+
+  makeLogo();
 
   makeTextBubble('about', 'f(x) software is a', 'small, independent', 'software and website', 'development shop in', 'Northern Virginia.');
   makeTextBubble('contact', 'Find out what we', 'can do for you:', 'joe@fofx-software.com');

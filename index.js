@@ -8,58 +8,63 @@ window.addEventListener('load', function() {
 
   namespace = "http://www.w3.org/2000/svg";
 
-  var canvasWidth, canvasHeight;
-  $('.full-page').attr({
-    width: canvasWidth = $(window).width() - 20,
-    height: canvasHeight = $(window).height() - 20
-  });
+  var canvasWidth, canvasHeight, origin, resize, squareSize;
 
-  var squareSize = canvasWidth / 25;
-  var origin = {
-    x: getRand(squareSize, canvasWidth - squareSize),
-    y: getRand(squareSize, canvasHeight - squareSize)
-  }
+  (resize = function() { 
+    $('.full-page').attr({
+      width: canvasWidth = $(window).width() - 20,
+      height: canvasHeight = $(window).height() - 20
+    });
 
-  $('#x-axis').attr({ x1: 0, y1: origin.y, x2: canvasWidth, y2: origin.y });
-  $('#y-axis').attr({ x1: origin.x, y1: 0, x2: origin.x, y2: canvasHeight });
-
-  [-1, 1].forEach(function(dir) {
-    for(var x = origin.x + dir * squareSize; x > 0 && x < canvasWidth; x += dir * squareSize) {
-      $($('#grid')[0].appendChild(
-        document.createElementNS(namespace, 'line')
-      )).attr({
-        x1: x, y1: 0, x2: x, y2: canvasHeight,
-        stroke: 'black', 'stroke-width': 0.5, 'stroke-dasharray': '5'
-      });
+    squareSize = canvasWidth / 25;
+    origin = {
+      x: getRand(squareSize, canvasWidth - squareSize),
+      y: getRand(squareSize, canvasHeight - squareSize)
     }
-    for(var y = origin.y + dir * squareSize; y > 0 && y < canvasHeight; y += dir * squareSize) {
-      $($('#grid')[0].appendChild(
-        document.createElementNS(namespace, 'line')
-      )).attr({
-        x1: 0, y1: y, x2: canvasWidth, y2: y,
-        stroke: 'black', 'stroke-width': 0.5, 'stroke-dasharray': '5'
-      });
-    }
-  });
 
-  var angleLine = $('#angle-line').attr({
-    stroke: color,
-    x1: origin.x,
-    y1: origin.y,
-    x2: origin.x,
-    y2: origin.y
-  });
+    $('#x-axis').attr({ x1: 0, y1: origin.y, x2: canvasWidth, y2: origin.y });
+    $('#y-axis').attr({ x1: origin.x, y1: 0, x2: origin.x, y2: canvasHeight });
 
-  var angleArc = $('#angle-arc').attr('stroke', color);
+    $('#grid').empty();
 
-  var angleText = $('#angle-text').attr({
-    fill: color,
-    x: origin.x + squareSize / 4,
-    y: origin.y + squareSize / 4 + 10
-  })[0];
+    [-1, 1].forEach(function(dir) {
+      for(var x = origin.x + dir * squareSize; x > 0 && x < canvasWidth; x += dir * squareSize) {
+        $($('#grid')[0].appendChild(
+          document.createElementNS(namespace, 'line')
+        )).attr({
+          x1: x, y1: 0, x2: x, y2: canvasHeight,
+          stroke: 'black', 'stroke-width': 0.5, 'stroke-dasharray': '5'
+        });
+      }
+      for(var y = origin.y + dir * squareSize; y > 0 && y < canvasHeight; y += dir * squareSize) {
+        $($('#grid')[0].appendChild(
+          document.createElementNS(namespace, 'line')
+        )).attr({
+          x1: 0, y1: y, x2: canvasWidth, y2: y,
+          stroke: 'black', 'stroke-width': 0.5, 'stroke-dasharray': '5'
+        });
+      }
+    });
+
+    $('#angle-line').attr({
+      stroke: color,
+      x1: origin.x,
+      y1: origin.y,
+      x2: origin.x,
+      y2: origin.y
+    });
+
+    $('#angle-arc').attr('stroke', color);
+
+    $('#angle-text').attr({
+      fill: color,
+      x: origin.x + squareSize / 4,
+      y: origin.y + squareSize / 4 + 10
+    })[0];
+  })();
 
   $(window).mousemove(function(e) {
-    angleLine.attr({
+    $('#angle-line').attr({
       x2: e.pageX - 10,
       y2: e.pageY - 10
     });
@@ -75,16 +80,16 @@ window.addEventListener('load', function() {
       x: origin.x + squareSize / 4 * Math.cos(angle),
       y: origin.y + squareSize / 4 * Math.sin(angle)
     }
-    angleArc.attr('d',
+    $('#angle-arc').attr('d',
       'M ' + (origin.x + squareSize / 4) + ' ' +
       origin.y + 'A ' + (squareSize / 4) + ' ' +
       (squareSize / 4) + ' 0 ' + sweep + ' 0 ' +
       newEnd.x + ' ' + newEnd.y
     );
-    $(angleText).text(Math.round((2 * Math.PI - angle) / Math.PI * 180) + unescape('\xB0'));
-  });
+    $('#angle-text').text(Math.round((2 * Math.PI - angle) / Math.PI * 180) + unescape('\xB0'));
 
-  makeLogo();
+    makeLogo();
+  });
 
   makeTextBubble('about', 'f(x) software is a', 'small, independent', 'software and website', 'development shop in', 'Northern Virginia.');
   makeTextBubble('contact', 'Find out what we', 'can do for you:', 'joe@fofx-software.com');
@@ -97,6 +102,8 @@ window.addEventListener('load', function() {
   $('#canvas').on('mouseup', '.moving', function() {
     $(this).attr('class', $(this).attr('class').replace('moving', 'moveable'));
   });
+
+  $(window).resize(resize);
 }, false);
 
 function makeTextBubble(elementId, altText) {
@@ -165,6 +172,7 @@ function makeTextBubble(elementId, altText) {
 }
 
 function makeLogo() {
+  $('#logo').empty();
   var logo = $('#logo')[0];
  
   var period = $('body').width() / 10;

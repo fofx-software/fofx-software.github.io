@@ -18,7 +18,10 @@
         cursor: grabbing;
         cursor: -webkit-grabbing;
       }
-      text { font-size: 20px; pointer-events: none; }
+      text {
+        font-size: 20px;
+        pointer-events: none; /* fixes bubble moving issue in chrome */
+      }
     </style>
     <script src=https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js></script>
   </head>

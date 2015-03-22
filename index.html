@@ -25,7 +25,7 @@
             <span class="icon-bar"></span>
           </button>
           <a id="a-logo" class="navbar-brand" href="javascript:void(0)" style="position:relative;font-style:italic;">f(x) software
-            <svg id="logo" height="100%" width="100%" style="position:absolute; left:15px; top:0px;" transform="translate(-15,0)">
+            <svg id="logo" height="100%" width="100%" style="position:absolute; left:15px; top:0px;">
             </svg>
             <script type="text/javascript">
               var logo = document.getElementById('logo');
@@ -38,12 +38,12 @@
               }
               var color = 'rgba(50,50,50,0.25)';
               var svgNS = "http://www.w3.org/2000/svg";
-              for(var x = 0; x < period * 2; x++) {
+              for(var x = 0; x < period * 2 - 30; x++) {
                 var lineSeg = document.createElementNS(svgNS, 'line');
                 lineSeg.setAttribute('x1', x);
-                lineSeg.setAttribute('y1', getY(x));
+                lineSeg.setAttribute('y1', getY(x + 15));
                 lineSeg.setAttribute('x2', x + 1);
-                lineSeg.setAttribute('y2', getY(x + 1));
+                lineSeg.setAttribute('y2', getY(x + 16));
                 lineSeg.setAttribute('stroke', color);
                 logo.appendChild(lineSeg);
               }

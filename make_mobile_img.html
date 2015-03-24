@@ -1,0 +1,73 @@
+<head>
+  <!--<link href='http://fonts.googleapis.com/css?family=Coda:800' rel='stylesheet' type='text/css'>
+   -->
+</head>
+<div style="text-align:center;">
+  <canvas id="make-img" height="500" width="500"></canvas>
+  <script>
+    var cvs = document.getElementById('make-img');
+    var ctx = cvs.getContext('2d');
+    var phoneScreenWidth = 130;
+    var phoneScreenHeight = phoneScreenWidth / 0.5634;
+    var cornerRad = 10;
+    var topLength = 35;
+    var bottomLength = 50;
+
+    ctx.save();
+      var burstRad = phoneScreenHeight - 50;
+      var eachRot = Math.PI / 12;
+      var pointx = Math.sin(eachRot / 2) * burstRad;
+      var pointy = Math.cos(eachRot / 2) * burstRad;
+      ctx.translate(185 + phoneScreenWidth / 2, 75 + phoneScreenHeight / 2 + (bottomLength - topLength) / 2);
+      var gradient = ctx.createRadialGradient(0, 0, phoneScreenHeight, 0, 0, 0);
+      gradient.addColorStop(1, 'rgb(100,200,255)');
+      gradient.addColorStop(0, "white");
+      ctx.fillStyle = gradient;
+      ctx.beginPath(); ctx.arc(0, 0, phoneScreenHeight - 15, 0, 2 * Math.PI);
+      ctx.fill();
+    ctx.restore();
+
+    ctx.beginPath();
+      ctx.moveTo(185 - cornerRad, 75 - topLength + cornerRad);
+      ctx.lineTo(185 - cornerRad, 75 + phoneScreenHeight + bottomLength - cornerRad);
+      ctx.arc(185, 75 + phoneScreenHeight + bottomLength - cornerRad, cornerRad, Math.PI, Math.PI / 2, true);
+      ctx.lineTo(185 + phoneScreenWidth, 75 + phoneScreenHeight + bottomLength);
+      ctx.arc(185 + phoneScreenWidth, 75 + phoneScreenHeight + bottomLength - cornerRad, cornerRad, Math.PI / 2, 0, true);
+      ctx.lineTo(185 + phoneScreenWidth + cornerRad, 75 - topLength + cornerRad);
+      ctx.arc(185 + phoneScreenWidth, 75 - topLength + cornerRad, cornerRad, 0, 1.5 * Math.PI, true);
+      ctx.lineTo(185, 75 - topLength);
+      ctx.arc(185, 75 - topLength + cornerRad, cornerRad, 1.5 * Math.PI, Math.PI, true);
+      ctx.closePath();
+    ctx.fill();
+
+    ctx.fillStyle = 'white';
+    ctx.fillRect(185, 75, phoneScreenWidth, phoneScreenHeight);
+    var circleCenter = [185 + phoneScreenWidth / 2, 75 + phoneScreenHeight + bottomLength / 2];
+    ctx.strokeStyle = 'white';
+    ctx.lineWidth = 3;
+
+    ctx.beginPath();
+      ctx.arc(circleCenter[0], circleCenter[1], bottomLength / 4, 0, 2 * Math.PI);
+    ctx.stroke();
+
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = 'http://fonts.googleapis.com/css?family=Poiret+One';
+    document.getElementsByTagName('head')[0].appendChild(link);
+    
+    // Trick from http://stackoverflow.com/questions/2635814/
+    var image = new Image;
+    image.onerror = function() {
+      ctx.font = "50pt bold";
+      ctx.textAlign = "center";
+      ctx.strokeStyle = 'black';
+      ctx.fillStyle = "black";
+      ctx.font = '50px "Poiret One"';
+      ctx.fillText("MOBILE", 250, 75 + phoneScreenHeight + bottomLength * 2);
+      ctx.fillText("OPTIMIZATION", 250, 75 + phoneScreenHeight + bottomLength * 3);
+    };
+    image.src = link.href;
+
+  </script>
+</div>

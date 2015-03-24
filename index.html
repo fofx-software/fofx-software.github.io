@@ -15,22 +15,10 @@
       <link rel="stylesheet" href="css/bootstrap.min.css">
     <style>
       body { margin-top: 70px; }
-      .img-container {
-        height: 100%;
-        padding: 20px;
-        border: 1px solid rgb(100,100,100);
-        -webkit-border-radius: 20px;
-           -moz-border-radius: 20px;
-                border-radius: 20px;
-      }
-      .img-box { padding: 15px; }
-      .img-container > img {
-        max-width: 100%;
-        max-height: 100%;
-      }
-      .img-container > svg {
-        height: 100%;
-        width: 100%;
+      .img-col { text-align: center; }
+      .img-col > img {
+        width: 25%;
+        margin-left: 30px;
       }
     </style>
   </head>
@@ -82,48 +70,9 @@
     </nav>
     <div class="container">
       <div class="row">
-        <div class="col-xs-6 col-sm-3 img-box">
-          <div class="img-container">
-            <img src="img/HTML5_Logo.png" alt="html 5 logo"></img>
-          </div>
-        </div>
-        <div class="col-xs-6 col-sm-3 img-box">
-          <div class="img-container">
-            <img src="img/mobile_optimization.png" alt="mobile optimization"></img>
-          </div>
-        </div>
-        <div class="col-xs-6 col-sm-3 img-box">
-          <div class="img-container">
-            <svg id="customer-outreach">
-              <rect x="10%" y="10%" width="80%" height="40%" fill="transparent" stroke="black" stroke-width="5"/>
-              <line x1="10%" y1="10%" x2="50%" y2="40%" stroke="black" stroke-width="5"/>
-              <line x1="50%" y1="40%" x2="90%" y2="10%" stroke="black" stroke-width="5"/>
-              <text x="50%" y="80%" text-anchor="middle" style="font-weight:bold;font-size:20px;">CUSTOMER</text>
-              <text x="50%" y="90%" text-anchor="middle" style="font-weight:bold;font-size:20px;">OUTREACH</text>
-              <script>
-                var svgNS = "http://www.w3.org/2000/svg";
-                var line = document.createElementNS(svgNS, 'line');
-                var width = $('#customer-outreach').width();
-                var height = $('#customer-outreach').height();
-                var flapAngle = Math.atan(0.3 * width / (0.4 * width));
-                var flapYatX = 0.1 * width + Math.tan(flapAngle) * 0.3 * width;
-                flapYatX *= 1 / width * 100;
-                line.setAttribute('x1', "10%");
-                line.setAttribute('y1', "50%");
-                line.setAttribute('x2', "40%");
-                line.setAttribute('y2', flapYatX + "%");
-                line.setAttribute('stroke', 'black');
-                $('#customer-outreach').append(line);
-                var line2 = document.createElementNS(svgNS, 'line');
-                line2.setAttribute('x1', '60%');
-                line2.setAttribute('y1', flapYatX + "%");
-                line2.setAttribute('x2', "90%");
-                line2.setAttribute('y2', "50%");
-                line2.setAttribute('stroke', 'black');
-                $('#customer-outreach').append(line2);
-              </script>
-            </svg>
-          </div>
+        <div class="col-xs-12 img-col">
+          <img src="img/mobile_optimization.png" alt="mobile optimization"></img>
+          <img src="img/mobile_optimization.png" alt="mobile optimization"></img>
         </div>
       </div>
     </div>
